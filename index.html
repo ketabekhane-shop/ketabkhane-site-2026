@@ -56,96 +56,13 @@ footer{border-top:1px solid var(--line);padding:24px 0;color:var(--muted);font-s
 .panel-head{display:flex;justify-content:space-between;align-items:center;margin-bottom:15px}
 .panel-head h2{font-size:19px;margin:0}
 .close{border:0;border-radius:50%;width:34px;height:34px}
-.field{display:block;margin:12p>درسی</option><option>روانشناسی</option><option>فلسفه</option><option>سایر</option></select></label>
-</div>
-<div class="formgrid">
-<label class="field"><span>وضعیت کتاب</span><select id="condition"><option>نو</option><option>در حد نو</option><option>دست‌دوم</option></select></label>
-<label class="field"><span>شماره تماس فروشنده</span><input id="phone" type="tel" placeholder="مثلاً 0912..."></label>
-</div>
-<label class="field"><span>توضیحات</span><textarea id="description" maxlength="500" placeholder="توضیحاتی درباره کتاب، چاپ، مترجم و..."></textarea></label>
-<label class="field"><span>عکس کتاب *</span><input id="image" type="file" accept="image/*" required><img id="preview" class="preview" alt="پیش‌نمایش عکس انتخاب‌شده"></label>
-<button class="btn" id="submitBtn" type="submit">انتشار آگهی</button>
-</form>
-<div class="admin-items"><b style="font-size:13px">مدیریت آگهی‌های ثبت‌شده</b><div id="adminItems"></div></div>
-<button class="btn alt" id="logout" style="margin-top:14px">خروج از مدیریت</button>
-</div>
-</div>
-</div>
-<div class="toast" id="toast" role="status"></div>
-
-<script>
-const SUPABASE_URL = 'https://setnxaucootvqdvcvywc.supabase.co';
-const SUPABASE_KEY = 'sb_publishable_S2l1IXcMYN33aMvGj7upNg_JeHkV3pV';
-const client = window.supabase.createClient(SUPABASE_URL, SUPABASE_KEY);
-
-const $ = id => document.getElementById(id);
-let active = 'همه';
-let chosenFile = null;
-let allBooks = [];
-let isAdmin = false;
-
-function fa(n){return String(n).replace(/\d/g,d=>'۰۱۲۳۴۵۶۷۸۹'[d])}
-function money(n){return Number(n).toLocaleString('fa-IR')+' تومان'}
-function esc(s){return String(s??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]))}
-function toast(t){
-  $('toast').textContent=t;
-  $('toast').classList.add('show');
-  setTimeout(()=>$('toast').classList.remove('show'),3500);
-}
-
-function imageUrl(book){
-  return book.image_url || '';
-}
-
-function render(){
-  const q=$('search').value.trim().toLowerCase();
-  const books=allBooks.filter(x=>
-    (active==='همه'||x.category===active) &&
-    (String(x.title'')+' '+String(x.description'')+' '+String(x.category||'')).toLowerCase().includes(q)
-  );
-  $('total').textContent=fa(allBooks.length);
-  $('grid').innerHTML=books.length ? books.map(x=>
-    <article class="card">
-      <div class="photo">${imageUrl(x)?<img src="${esc(imageUrl(x))}" alt="${esc(x.title)}" loading="lazy">:'📚'}</div>
-      <div class="info">
-        <h3>${esc(x.title)}</h3>
-        <div class="meta"><span>${esc(x.category)}</span><span>• ${esc(x.condition)}</span></div>
-        <div class="price">${money(x.price)}</div>
-        <p class="desc">${esc(x.description||'بدون توضیحات')}</p>
-        ${x.phone?<button class="contact" type="button" data-phone="${esc(x.phone)}">نمایش شماره تماس</button>:''}
-      </div>
-    </article>).join(''):'<div class="empty">آگهی‌ای با این مشخصات پیدا نشد.</div>';
-
-  document.querySelectorAll('[data-phone]').forEach(b=>{
-    b.onclick=()=>toast('شماره تماس: '+b.dataset.phone);
-  });
-
-  if(isAdmin) renderAdmin();
-}
-
-async function loadBooks(){
-  $('grid').innerHTML='<div class="empty">در حال دریافت آگهی‌ها...</div>';
-  const {data,error}=await client.from('books').select('*').order('created_at',{ascending:false});
-  if(error){
-    console.error(error);
-    $('grid').innerHTML='<div class="empty">دریافت آگهی‌ها با خطا روبه‌رو شد. تنظیمات Supabase را بررسی کن.</div>';
-    toast('خطا در دریافت آگهی‌ها از Supabase');
-    return;
-  }
-  allBooks=data||[];
-  render();
-}
-
-async function renderAdmin(){
-  const {data,error}=await client.from('books').select('id,title,price').order('created_at',{ascending:false});
-  if(error){$('adminItems').textContent='خطا در دریافت فهرست آگهی‌ها';return}
-  $('adminItems').innerHTML=(data||[]).map(x=>
-    <div class="admin-row">
-      <span>${esc(x.title)} — ${money(x.price)}</span>
-      <button class="del" type="button" data-delete="${x.id}">حذف</button>
-    </div>).join('') || '<p class="hint">هنوز آگهی‌ای ثبت نشده است.</p>';
-
-  document.querySelectorAll('[data-delete]').forEach(b=>{ook(b.dataset.delete);
+.field{display:block;margin:12p
+$('image').addEventListener('change',e=>{let f=e.target.files[0];if(!f)return;if(!f.type.startsWith('image/')){toast('لطفاً فایل عکس انتخاب کن');return}if(f.size>3*1024*1024){toast('حجم عکس باید کمتر از ۳ مگابایت باشد');e.target.value='';return}let r=new FileReader();r.onload=()=>{chosenImage=r.result;$('preview').src=chosenImage;$('preview').style.display='block'};r.readAsDataURL(f)});
+$('listingForm').addEventListener('submit',e=>{e.preventDefault();if(!chosenImage){toast('لطفاً عکس کتاب را انتخاب کن');return}let a=listings();a.unshift({id:Date.now(),title:$('title').value.trim(),price:Number($('price').value),category:$('category').value,condition:$('condition').value,phone:$('phone').value.trim(),description:$('description').value.trim(),image:chosenImage});try{save(a);e.target.reset();chosenImage='';$('preview').style.display='none';toast('آگهی با موفقیت ثبت شد')}catch(err){toast('فضای ذخیره‌سازی مرورگر پر شده؛ عکس کوچک‌تری انتخاب کن') }});
+function renderAdmin(){$('adminItems').innerHTML=listings().map(x=><div class="admin-row"><span>${esc(x.title)} — ${money(x.price)}</span><button class="del" data-id="${x.id}">حذف</button></div>).join('');$('adminItems').querySelectorAll('button').forEach(b=>b.onclick=()=>{save(listings().filter(x=>String(x.id)!==b.dataset.id));toast('آگهی حذف شد')})}
+render();
+</script></body></html>
+  ook(b.dataset.delete);
   });
 }
 
@@ -285,7 +202,9 @@ $('logout').onclick=logout;
 
 client.auth.getSession().then(async({data})=>{
   if(data.session){
-    isAdmin=true;hidden=true;
+    isAdmin=true;
+    $('login').
+    hidden=true;
     $('dashboard').hidden=false;
     $('modalTitle').textContent='مدیریت آگهی‌ها';
     await renderAdmin();
