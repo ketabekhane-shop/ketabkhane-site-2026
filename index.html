@@ -1,49 +1,33 @@
-<!doctype html>
-<html lang="fa" dir="rtl">
+<!doctype html><html lang="fa" dir="rtl">
 <head>
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
 <title>کتاب‌خانه | بازار کتاب‌های نو و دست‌دوم</title>
 <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
 <style>
 @import url('https://fonts.googleapis.com/css2?family=Vazirmatn:wght@400;500;600;700;800&display=swap');
 :root{--g:#315b49;--gd:#203e31;--gold:#c49a55;--bg:#f7f5ef;--paper:#fffefa;--ink:#27312b;--muted:#788078;--line:#e9e6dc}
-*{box-sizing:border-box}
-body{margin:0;background:var(--bg);color:var(--ink);font-family:Vazirmatn,Tahoma,sans-serif}
-button,input,textarea,select{font:inherit}
-button{cursor:pointer}
-.wrap{width:min(1120px,92%);margin:auto}
+*{box-sizing:border-box}body{margin:0;background:var(--bg);color:var(--ink);font-family:Vazirmatn,Tahoma,sans-serif}
+button,input,textarea,select{font:inherit}button{cursor:pointer}.wrap{width:min(1120px,92%);margin:auto}
 header{min-height:76px;border-bottom:1px solid var(--line);display:flex;align-items:center;justify-content:space-between;gap:15px}
 .brand{font-size:21px;font-weight:800;color:var(--g);display:flex;align-items:center;gap:9px;text-decoration:none}
 .logo{width:38px;height:38px;border-radius:12px 12px 12px 3px;background:var(--g);color:white;display:grid;place-items:center}
-.nav{display:flex;gap:23px;font-size:13px;color:#667168}
-.nav a{text-decoration:none;color:inherit}
-.head-actions{display:flex;gap:9px;align-items:center}
-.search{border:1px solid var(--line);background:white;border-radius:25px;padding:8px 12px}
-.search input{border:0;outline:0;width:145px;font-size:12px}
-.btn{border:0;background:var(--g);color:white;border-radius:8px;padding:11px 16px}
-.btn:hover{background:var(--gd)}
-.btn.alt{background:#edf2ed;color:var(--g)}
+.nav{display:flex;gap:23px;font-size:13px;color:#667168}.nav a{text-decoration:none;color:inherit}
+.head-actions{display:flex;gap:9px;align-items:center}.search{border:1px solid var(--line);background:white;border-radius:25px;padding:8px 12px}
+.search input{border:0;outline:0;width:145px;font-size:12px}.btn{border:0;background:var(--g);color:white;border-radius:8px;padding:11px 16px}
+.btn:hover{background:var(--gd)}.btn.alt{background:#edf2ed;color:var(--g)}
 .hero{padding:42px 0 32px;display:grid;grid-template-columns:1fr auto;gap:25px;align-items:center}
-.eyebrow{font-size:12px;color:var(--gold);font-weight:700}
-.hero h1{font-size:clamp(30px,4vw,45px);line-height:1.5;margin:8px 0}
-.hero h1 span{color:var(--g)}
-.hero p{color:var(--muted);font-size:14px;line-height:2;max-width:590px;margin:0}
+.eyebrow{font-size:12px;color:var(--gold);font-weight:700}.hero h1{font-size:clamp(30px,4vw,45px);line-height:1.5;margin:8px 0}
+.hero h1 span{color:var(--g)}.hero p{color:var(--muted);font-size:14px;line-height:2;max-width:590px;margin:0}
 .hero-badge{background:#e9ece4;border-radius:15px;padding:22px 25px;text-align:center;color:var(--g);min-width:175px}
-.hero-badge b{font-size:27px;display:block}
-.hero-badge span{font-size:11px}
-.toolbar{display:flex;justify-content:space-between;align-items:center;gap:12px;margin:20px 0}
-.toolbar h2{font-size:22px;margin:0}
-.filters{display:flex;gap:7px;flex-wrap:wrap}
-.chip{border:1px solid var(--line);border-radius:22px;background:transparent;padding:8px 13px;font-size:11px;color:#667168}
+.hero-badge b{font-size:27px;display:block}.hero-badge span{font-size:11px}
+.toolbar{display:flex;justify-content:space-between;align-items:center;gap:12px;margin:20px 0}.toolbar h2{font-size:22px;margin:0}
+.filters{display:flex;gap:7px;flex-wrap:wrap}.chip{border:1px solid var(--line);border-radius:22px;background:transparent;padding:8px 13px;font-size:11px;color:#667168}
 .chip.active,.chip:hover{background:var(--g);color:white;border-color:var(--g)}
 .grid{display:grid;grid-template-columns:repeat(4,1fr);gap:16px;margin-bottom:55px}
 .card{background:var(--paper);border:1px solid var(--line);border-radius:11px;overflow:hidden;transition:.2s}
 .card:hover{transform:translateY(-3px);box-shadow:0 10px 25px #203e3112}
 .photo{height:205px;background:#e9e9e1;display:grid;place-items:center;overflow:hidden;color:#899188}
-.photo img{width:100%;height:100%;object-fit:cover}
-.info{padding:13px}
-.info h3{font-size:14px;margin:0 0 6px}
+.photo img{width:100%;height:100%;object-fit:cover}.info{padding:13px}.info h3{font-size:14px;margin:0 0 6px}
 .meta{color:var(--muted);font-size:11px;display:flex;gap:8px;flex-wrap:wrap}
 .price{color:var(--g);font-size:15px;font-weight:800;margin-top:12px}
 .desc{font-size:11px;color:#68736b;line-height:1.8;margin:8px 0 0;min-height:38px}
@@ -51,167 +35,121 @@ header{min-height:76px;border-bottom:1px solid var(--line);display:flex;align-it
 .empty{grid-column:1/-1;text-align:center;padding:45px;color:var(--muted);background:var(--paper);border-radius:12px}
 footer{border-top:1px solid var(--line);padding:24px 0;color:var(--muted);font-size:11px;display:flex;justify-content:space-between;gap:15px}
 .modal{position:fixed;inset:0;background:#15251edb;display:none;align-items:center;justify-content:center;padding:14px;z-index:5}
-.modal.show{display:flex}
-.panel{background:var(--paper);border-radius:14px;padding:22px;width:min(620px,100%);max-height:94vh;overflow:auto}
+.modal.show{display:flex}.panel{background:var(--paper);border-radius:14px;padding:22px;width:min(620px,100%);max-height:94vh;overflow:auto}
 .panel-head{display:flex;justify-content:space-between;align-items:center;margin-bottom:15px}
-.panel-head h2{font-size:19px;margin:0}
-.close{border:0;border-radius:50%;width:34px;height:34px}
-.field{display:block;margin:12p
-$('image').addEventListener('change',e=>{let f=e.target.files[0];if(!f)return;if(!f.type.startsWith('image/')){toast('لطفاً فایل عکس انتخاب کن');return}if(f.size>3*1024*1024){toast('حجم عکس باید کمتر از ۳ مگابایت باشد');e.target.value='';return}let r=new FileReader();r.onload=()=>{chosenImage=r.result;$('preview').src=chosenImage;$('preview').style.display='block'};r.readAsDataURL(f)});
-$('listingForm').addEventListener('submit',e=>{e.preventDefault();if(!chosenImage){toast('لطفاً عکس کتاب را انتخاب کن');return}let a=listings();a.unshift({id:Date.now(),title:$('title').value.trim(),price:Number($('price').value),category:$('category').value,condition:$('condition').value,phone:$('phone').value.trim(),description:$('description').value.trim(),image:chosenImage});try{save(a);e.target.reset();chosenImage='';$('preview').style.display='none';toast('آگهی با موفقیت ثبت شد')}catch(err){toast('فضای ذخیره‌سازی مرورگر پر شده؛ عکس کوچک‌تری انتخاب کن') }});
-function renderAdmin(){$('adminItems').innerHTML=listings().map(x=><div class="admin-row"><span>${esc(x.title)} — ${money(x.price)}</span><button class="del" data-id="${x.id}">حذف</button></div>).join('');$('adminItems').querySelectorAll('button').forEach(b=>b.onclick=()=>{save(listings().filter(x=>String(x.id)!==b.dataset.id));toast('آگهی حذف شد')})}
-render();
-</script></body></html>
-  ook(b.dataset.delete);
-  });
+.panel-head h2{font-size:19px;margin:0}.close{border:0;border-radius:50%;width:34px;height:34px}
+.field{display:block;margin:12px 0}.field span{display:block;font-size:12px;margin-bottom:6px}
+.field input,.field textarea,.field select{width:100%;border:1px solid var(--line);border-radius:7px;padding:10px;background:white;outline-color:var(--g);font-size:13px}
+.field textarea{min-height:75px;resize:vertical}.formgrid{display:grid;grid-template-columns:1fr 1fr;gap:0 12px}
+.preview{width:100%;max-height:180px;object-fit:contain;border-radius:8px;background:#f0efe9;display:none;margin-top:8px}
+.hint{font-size:11px;color:var(--muted);line-height:1.9}.admin-items{border-top:1px solid var(--line);margin-top:18px;padding-top:10px}
+.admin-row{display:flex;align-items:center;justify-content:space-between;gap:12px;padding:9px 0;border-bottom:1px solid var(--line);font-size:12px}
+.del{border:0;background:#f8eae7;color:#a34d43;border-radius:6px;padding:7px 10px}
+.toast{position:fixed;bottom:18px;left:18px;background:#233e30;color:white;padding:11px 16px;border-radius:8px;font-size:12px;opacity:0;transition:.2s;z-index:8;max-width:90%}
+.toast.show{opacity:1}[hidden]{display:none!important}
+@media(max-width:760px){.nav{display:none}.hero{grid-template-columns:1fr}.hero-badge{display:none}.grid{grid-template-columns:repeat(2,1fr)}.toolbar{align-items:flex-start;flex-direction:column}.search input{width:105px}}
+@media(max-width:430px){header{height:68px}.brand{font-size:17px}.search{display:none}.grid{gap:9px}.photo{height:155px}.info{padding:10px}.formgrid{grid-template-columns:1fr}footer{flex-direction:column}}
+</style></head><body>
+<div class="wrap"><header>
+<a class="brand" href="#"><span class="logo">ک</span> کتاب‌خانه</a>
+<nav class="nav"><a href="#">خانه</a><a href="#listings">آگهی کتاب‌ها</a><a href="#about">درباره ما</a></nav>
+<div class="head-actions"><label class="search">⌕ <input id="search" placeholder="جست‌وجوی کتاب"></label><button class="btn" id="adminOpen">پنل مدیریت</button></div>
+</header>
+<section class="hero" id="about"><div><div class="eyebrow">✦ بازار کتاب‌های نو و دست‌دوم</div><h1>کتاب بعدی‌ات را<br><span>اینجا پیدا کن</span></h1><p>کتاب‌ها را ببین، قیمت‌ها را مقایسه کن و از میان آگهی‌های تازه، کتاب مورد علاقه‌ات را پیدا کن.</p></div><div class="hero-badge"><b id="total">۰</b><span>آگهی ثبت‌شده</span></div></section>
+<section id="listings"><div class="toolbar"><h2>آگهی‌های کتاب</h2><div class="filters">
+<button class="chip active" data-cat="همه">همه</button><button class="chip" data-cat="رمان">رمان</button><button class="chip" data-cat="درسی">درسی</button><button class="chip" data-cat="روانشناسی">روانشناسی</button><button class="chip" data-cat="فلسفه">فلسفه</button><button class="chip" data-cat="سایر">سایر</button>
+</div></div><div class="grid" id="grid"><div class="empty">در حال دریافت آگهی‌ها...</div></div></section>
+<footer><div><b style="color:var(--g);font-size:15px">کتاب‌خانه ✦</b><br>بازاری برای دوست‌داران کتاب</div><div>برای ارتباط با فروشنده از اطلاعات داخل آگهی استفاده کنید.</div></footer></div>
+<div class="modal" id="modal"><div class="panel"><div class="panel-head"><h2 id="modalTitle">ورود مدیر</h2><button class="close" id="close">×</button></div>
+<div id="login"><p class="hint">برای ورود به پنل مدیریت، ایمیل و رمز حساب مدیر را وارد کن.</p>
+<label class="field"><span>ایمیل مدیر</span><input id="email" type="email" autocomplete="username" placeholder="ایمیل حساب Supabase"></label>
+<label class="field"><span>رمز عبور</span><input id="pass" type="password" autocomplete="current-password" placeholder="رمز حساب Supabase"></label><button class="btn" id="loginBtn">ورود</button></div>
+<div id="dashboard" hidden><p class="hint">اطلاعات کتاب را وارد کن، عکس را انتخاب کن و آگهی را منتشر کن.</p>
+<form id="listingForm">
+<label class="field"><span>عنوان کتاب / آگهی *</span><input id="title" required maxlength="80" placeholder="مثلاً کتاب ملت عشق"></label>
+<div class="formgrid"><label class="field"><span>قیمت (تومان) *</span><input id="price" type="number" min="0" required placeholder="مثلاً ۲۵۰۰۰۰"></label>
+<label class="field"><span>دسته‌بندی</span><select id="category"><option>رمان</option><option>درسی</option><option>روانشناسی</option><option>فلسفه</option><option>سایر</option></select></label></div>
+<div class="formgrid"><label class="field"><span>وضعیت کتاب</span><select id="condition"><option>نو</option><option>در حد نو</option><option>دست‌دوم</option></select></label>
+<label class="field"><span>شماره تماس فروشنده</span><input id="phone" type="tel" placeholder="مثلاً 0912..."></label></div>
+<label class="field"><span>توضیحات</span><textarea id="description" maxlength="500" placeholder="توضیحاتی درباره کتاب، چاپ، مترجم و..."></textarea></label>
+<label class="field"><span>عکس کتاب *</span><input id="image" type="file" accept="image/*" required><img id="preview" class="preview" alt="پیش‌نمایش عکس انتخاب‌شده"></label>
+<button class="btn" id="submitBtn" type="submit">انتشار آگهی</button></form>
+<div class="admin-items"><b style="font-size:13px">مدیریت آگهی‌های ثبت‌شده</b><div id="adminItems"></div></div>
+<button class="btn alt" id="logout" style="margin-top:14px">خروج از مدیریت</button></div></div></div>
+<div class="toast" id="toast" role="status"></div>
+<script>
+const SUPABASE_URL='https://setnxaucootvqdvcvywc.supabase.co';
+const SUPABASE_KEY='sb_publishable_S2l1IXcMY33aMvGj7upNg_JeHkV3pV';
+const client=window.supabase.createClient(SUPABASE_URL,SUPABASE_KEY);
+const $=id=>document.getElementById(id);
+let active='همه',chosenFile=null,allBooks=[],isAdmin=false;
+function fa(n){return String(n).replace(/\d/g,d=>'۰۱۲۳۴۵۶۷۸۹'[d]);}
+function money(n){return Number(n).toLocaleString('fa-IR')+' تومان';}
+function esc(s){return String(s??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));}
+function toast(t){$('toast').textContent=t;$('toast').classList.add('show');setTimeout(()=>$('toast').classList.remove('show'),3500);}
+function render(){
+ const q=$('search').value.trim().toLowerCase();
+ const books=allBooks.filter(x=>(active==='همه'||x.category===active)&&(String(x.title||'')+' '+String(x.description||'')+' '+String(x.category||'')).toLowerCase().includes(q));
+ $('total').textContent=fa(allBooks.length);
+ $('grid').innerHTML=books.length?books.map(x=>`<article class="card"><div class="photo">${x.image_url?`<img src="${esc(x.image_url)}" alt="${esc(x.title)}" loading="lazy">`:'📚'}</div><div class="info"><h3>${esc(x.title)}</h3><div class="meta"><span>${esc(x.category||'')}</span><span>• ${esc(x.condition||'')}</span></div><div class="price">${money(x.price)}</div><p class="desc">${esc(x.description||'بدون توضیحات')}</p>${x.phone?`<button class="contact" type="button" data-phone="${esc(x.phone)}">نمایش شماره تماس</button>`:''}</div></article>`).join(''):'<div class="empty">آگهی‌ای با این مشخصات پیدا نشد.</div>';
+ document.querySelectorAll('[data-phone]').forEach(b=>b.onclick=()=>toast('شماره تماس: '+b.dataset.phone));
+ if(isAdmin)renderAdmin();
 }
-
+async function loadBooks(){
+ $('grid').innerHTML='<div class="empty">در حال دریافت آگهی‌ها...</div>';
+ const {data,error}=await client.from('books').select('*').order('created_at',{ascending:false});
+ if(error){console.error(error);$('grid').innerHTML='<div class="empty">دریافت آگهی‌ها با خطا روبه‌رو شد. تنظیمات Supabase را بررسی کن.</div>';toast('خطا در دریافت آگهی‌ها از Supabase');return;}
+ allBooks=data||[];render();
+}
+async function renderAdmin(){
+ const {data,error}=await client.from('books').select('id,title,price').order('created_at',{ascending:false});
+ if(error){$('adminItems').textContent='خطا در دریافت فهرست آگهی‌ها';return;}
+ $('adminItems').innerHTML=(data||[]).map(x=>`<div class="admin-row"><span>${esc(x.title)} — ${money(x.price)}</span><button class="del" type="button" data-delete="${x.id}">حذف</button></div>`).join('')||'<p class="hint">هنوز آگهی‌ای ثبت نشده است.</p>';
+ document.querySelectorAll('[data-delete]').forEach(b=>b.onclick=()=>deleteBook(b.dataset.delete));
+}
 async function deleteBook(id){
-  if(!confirm('از حذف این آگهی مطمئنی؟')) return;
-  const {error}=await client.from('books').delete().eq('id',id);
-  if(error){console.error(error);toast('حذف انجام نشد؛ دسترسی حذف را در Supabase بررسی کن');return}
-  toast('آگهی حذف شد');
-  await loadBooks();
-  await renderAdmin();
+ if(!confirm('از حذف این آگهی مطمئنی؟'))return;
+ const {error}=await client.from('books').delete().eq('id',id);
+ if(error){console.error(error);toast('حذف انجام نشد؛ دسترسی حذف را در Supabase بررسی کن');return;}
+ toast('آگهی حذف شد');await loadBooks();await renderAdmin();
 }
-
 async function login(){
-  const email=$('email').value.trim();
-  const password=$('pass').value;
-  if(!email||!password){toast('ایمیل و رمز عبور را وارد کن');return}
-  $('loginBtn').disabled=true;
-  $('loginBtn').textContent='در حال ورود...';
-  const {data,error}=await client.auth.signInWithPassword({email,password});
-  $('loginBtn').disabled=false;
-  $('loginBtn').textContent='ورود';
-  if(error){console.error(error);toast('ورود ناموفق بود؛ ایمیل و رمز را بررسی کن');return}
-  isAdmin=true;
-  $('login').hidden=true;
-  $('dashboard').hidden=false;
-  $('modalTitle').textContent='مدیریت آگهی‌ها';
-  $('pass').value='';
-  await renderAdmin();
-  toast('با موفقیت وارد شدی');
+ const email=$('email').value.trim(),password=$('pass').value;
+ if(!email||!password){toast('ایمیل و رمز عبور را وارد کن');return;}
+ $('loginBtn').disabled=true;$('loginBtn').textContent='در حال ورود...';
+ const {data,error}=await client.auth.signInWithPassword({email,password});
+ $('loginBtn').disabled=false;$('loginBtn').textContent='ورود';
+ if(error){console.error(error);toast('ورود ناموفق بود؛ ایمیل و رمز را بررسی کن');return;}
+ if((data.user?.email||'').toLowerCase()!=='admin.ketabkhane@gmail.com'){await client.auth.signOut();toast('این حساب اجازهٔ ورود به پنل مدیریت را ندارد.');return;}
+ isAdmin=true;$('login').hidden=true;$('dashboard').hidden=false;$('modalTitle').textContent='مدیریت آگهی‌ها';$('pass').value='';await renderAdmin();toast('با موفقیت وارد شدی');
 }
-
 async function logout(){
-  await client.auth.signOut();
-  isAdmin=false;
-  $('login').hidden=false;
-  $('dashboard').hidden=true;
-  $('email').value='';
-  $('pass').value='';
-  $('modalTitle').textContent='ورود مدیر';
-  toast('از پنل مدیریت خارج شدی');
+ await client.auth.signOut();isAdmin=false;$('login').hidden=false;$('dashboard').hidden=true;$('email').value='';$('pass').value='';$('modalTitle').textContent='ورود مدیر';toast('از پنل مدیریت خارج شدی');
 }
-
 $('image').addEventListener('change',e=>{
-  const f=e.target.files[0];
-  chosenFile=f||null;
-  if(!f){$('preview').style.display='none';return}
-  if(!f.type.startsWith('image/')){
-    toast('لطفاً یک فایل عکس انتخاب کن');
-    e.target.value='';
-    chosenFile=null;
-    return;
-  }
-  if(f.size>3*1024*1024){
-    toast('حجم عکس باید کمتر از ۳ مگابایت باشد');
-    e.target.value='';
-    chosenFile=null;
-    return;
-  }
-  const reader=new FileReader();
-  reader.onload=()=>{
-    $('preview').src=reader.result;
-    $('preview').style.display='block';
-  };
-  reader.readAsDataURL(f);
+ const f=e.target.files[0];chosenFile=f||null;if(!f){$('preview').style.display='none';return;}
+ if(!f.type.startsWith('image/')){toast('لطفاً یک فایل عکس انتخاب کن');e.target.value='';chosenFile=null;return;}
+ if(f.size>3*1024*1024){toast('حجم عکس باید کمتر از ۳ مگابایت باشد');e.target.value='';chosenFile=null;return;}
+ const reader=new FileReader();reader.onload=()=>{$('preview').src=reader.result;$('preview').style.display='block';};reader.readAsDataURL(f);
 });
-
 $('listingForm').addEventListener('submit',async e=>{
-  e.preventDefault();
-  if(!isAdmin){toast('ابتدا وارد حساب مدیر شو');return}
-  if(!chosenFile){toast('لطفاً عکس کتاب را انتخاب کن');return}
-
-  const btn=$('submitBtn');
-  btn.disabled=true;
-  btn.textContent='در حال انتشار...';
-
-  const ext=(chosenFile.name.split('.').pop()||'jpg').replace(/[^a-zA-Z0-9]/g,'');
-  const path=Date.now()+'-'+Math.random().toString(36).slice(2)+'.'+ext;
-
-  const {error:uploadError}=await client.storage.from('book-images').upload(path,chosenFile,{contentType:chosenFile.type,upsert:false});
-
-  if(uploadError){
-    console.error(uploadError);
-    toast('آپلود عکس ناموفق بود؛ تنظیمات Storage را بررسی کن');
-    btn.disabled=false;
-    btn.textContent='انتشار آگهی';
-    return;
-  }
-
-  const {data:urlData}=client.storage.from('book-images').getPublicUrl(path);
-  const publicUrl=urlData.publicUrl;
-
-  const book={
-    title:$('title').value.trim(),
-    price:Number($('price').value),
-    category:$('category').value,
-    condition:$('condition').value,
-    phone:$('phone').value.trim(),
-    description:$('description').value.trim(),
-    image_url:publicUrl,
-    image_path:path
-  };
-
-  const {error:insertError}=await client.from('books').insert(book);
-
-  if(insertError){
-    console.error(insertError);
-    toast('ذخیره آگهی ناموفق بود؛ دسترسی INSERT جدول را بررسی کن');
-    btn.disabled=false;
-    btn.textContent='انتشار آگهی';
-    return;
-  }
-
-  $('listingForm').reset();
-  chosenFile=null;
-  $('preview').style.display='none';
-  btn.disabled=false;
-  btn.textContent='انتشار آگهی';
-  toast('آگهی با موفقیت منتشر شد');
-  await loadBooks();
-  await renderAdmin();
+ e.preventDefault();if(!isAdmin){toast('ابتدا وارد حساب مدیر شو');return;}if(!chosenFile){toast('لطفاً عکس کتاب را انتخاب کن');return;}
+ const btn=$('submitBtn');btn.disabled=true;btn.textContent='در حال انتشار...';
+ const ext=(chosenFile.name.split('.').pop()||'jpg').replace(/[^a-zA-Z0-9]/g,'');
+ const path=Date.now()+'-'+Math.random().toString(36).slice(2)+'.'+ext;
+ const {error:uploadError}=await client.storage.from('book-images').upload(path,chosenFile,{contentType:chosenFile.type,upsert:false});
+ if(uploadError){console.error(uploadError);toast('آپلود عکس ناموفق بود؛ تنظیمات Storage را بررسی کن');btn.disabled=false;btn.textContent='انتشار آگهی';return;}
+ const {data:urlData}=client.storage.from('book-images').getPublicUrl(path);
+ const book={title:$('title').value.trim(),price:Number($('price').value),category:$('category').value,condition:$('condition').value,phone:$('phone').value.trim(),description:$('description').value.trim(),image_url:urlData.publicUrl,image_path:path};
+ const {error:insertError}=await client.from('books').insert(book);
+ if(insertError){console.error(insertError);toast('ذخیره آگهی ناموفق بود؛ دسترسی INSERT جدول را بررسی کن');btn.disabled=false;btn.textContent='انتشار آگهی';return;}
+ $('listingForm').reset();chosenFile=null;$('preview').style.display='none';btn.disabled=false;btn.textContent='انتشار آگهی';toast('آگهی با موفقیت منتشر شد');await loadBooks();await renderAdmin();
 });
-
-document.querySelectorAll('.chip').forEach(b=>{
-  b.addEventListener('click',()=>{
-    document.querySelector('.chip.active')?.classList.remove('active');
-    b.classList.add('active');
-    active=b.dataset.cat;
-    render();
-  });
+document.querySelectorAll('.chip').forEach(b=>b.addEventListener('click',()=>{document.querySelector('.chip.active')?.classList.remove('active');b.classList.add('active');active=b.dataset.cat;render();}));
+$('search').addEventListener('input',render);$('adminOpen').onclick=()=>$('modal').classList.add('show');$('close').onclick=()=>$('modal').classList.remove('show');$('loginBtn').onclick=login;$('logout').onclick=logout;
+client.auth.getSession().then(async({data,error})=>{
+ if(error){console.error(error);return;}const user=data.session?.user;
+ if(user&&(user.email||'').toLowerCase()==='admin.ketabkhane@gmail.com'){isAdmin=true;$('login').hidden=true;$('dashboard').hidden=false;$('modalTitle').textContent='مدیریت آگهی‌ها';await renderAdmin();}
 });
-
-$('search').addEventListener('input',render);
-$('adminOpen').onclick=()=>$('modal').classList.add('show');
-$('close').onclick=()=>$('modal').classList.remove('show');
-$('loginBtn').onclick=login;
-$('logout').onclick=logout;
-
-client.auth.getSession().then(async({data})=>{
-  if(data.session){
-    isAdmin=true;
-    $('login').
-    hidden=true;
-    $('dashboard').hidden=false;
-    $('modalTitle').textContent='مدیریت آگهی‌ها';
-    await renderAdmin();
-  }
-});
-
 loadBooks();
-</script>
-</body>
-</html>
+</script></body></html>
